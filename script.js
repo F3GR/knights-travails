@@ -26,7 +26,7 @@ function knightMoves(startPosition, endPosition) {
             let node = currentNode
             while (node) {
                 path.unshift(node)
-                node = node.parent
+                node = node.prev
             }
             return path;
         }
@@ -41,7 +41,7 @@ function knightMoves(startPosition, endPosition) {
                 !visitedPositions.has(newCoordinate.toString())) {
 
                 const newNode = new Node(newCoordinateX, newCoordinateY)
-                newNode.parent = currentNode
+                newNode.prev = currentNode
                 currentNode.next.push(newNode)
                 queue.push(newNode)
                 visitedPositions.add(newNode.toString())
@@ -56,7 +56,7 @@ class Node {
         this.x = coordinateX
         this.y = coordinateY
         this.next = []
-        this.parent = null
+        this.prev = null
     }
 }
 
